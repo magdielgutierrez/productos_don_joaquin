@@ -16,7 +16,7 @@ import re
     
 # xls.close()
 
-@task
+
 def _textDateComplete(txt_mes,txt_days,year):
     
     dias = [int(valor) for valor in txt_days]
@@ -46,14 +46,14 @@ def _textDateComplete(txt_mes,txt_days,year):
     resultado = [elemento for elemento in start if elemento  in dias]        
     return  resultado+fechas
 
-@task
+
 def _clasificarProveedor(nombre, precio):
     if 'trans' in str(nombre).lower() or precio < 0.10:
         return 'Transporte'
     else:
         return 'Productor'
 
-@task
+
 def _quitarLetras(valor):
     return re.sub(r'\D', '', valor)
 
