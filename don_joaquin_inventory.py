@@ -4,19 +4,6 @@ from io import StringIO
 import pandas as pd
 import re
 
-# smb_block = SMB.load("don-joaquin-inventario")
-# data=smb_block.read_path('/INVENTARIO PLANTA 2024/PLANILLA DE LECHE 2024.xlsx')
-
-# xls = pd.ExcelFile(data.decode('ISO-8859-1'))
-# sheets = xls.sheet_names
-
-# results = {}
-# for sheet in sheets:
-#     results[sheet] = xls.parse(sheet)
-    
-# xls.close()
-
-
 def _textDateComplete(txt_mes,txt_days,year):
     
     dias = [int(valor) for valor in txt_days]
@@ -164,6 +151,7 @@ def flows_read_inventory():
                
         rawData= _formatSheets(rawData,key)
         print(rawData)
+        smb_block.write_path(path='filename.txt', content=rawData.encode('utf-8'))
         break
 
 if __name__ == "__main__":
